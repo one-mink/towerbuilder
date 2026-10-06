@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cpnt0fjg0ltf5"]
+
+[ext_resource type="Script" uid="uid://rpensikx1yjl" path="res://scripts/block.gd" id="1_3inec"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ikqwi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4y8qy"]
+
+[node name="RigidBody3D" type="RigidBody3D" unique_id=1507486380]
+gravity_scale = 3.328
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_3inec")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1657559703]
+mesh = SubResource("BoxMesh_ikqwi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=410869312]
+shape = SubResource("BoxShape3D_4y8qy")

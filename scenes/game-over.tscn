@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bsffn8pci2cd6"]
+
+[node name="Node2D" type="Node2D" unique_id=1598684365]
+
+[node name="Label" type="Label" parent="." unique_id=14592829]
+offset_left = 498.0
+offset_top = 191.0
+offset_right = 1107.0
+offset_bottom = 606.0
+text = "GAME OVER
+"

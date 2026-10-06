@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://brmxa0aj05ix"]
+
+[ext_resource type="Script" uid="uid://1e2lyniexs4h" path="res://scripts/world.gd" id="1_rwgxs"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ikqwi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nnsk1"]
+
+[sub_resource type="Environment" id="Environment_ikqwi"]
+background_mode = 2
+background_color = Color(0.5621192, 0.40439123, 0.18437913, 1)
+background_energy_multiplier = 5.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ikqwi"]
+
+[node name="world" type="Node3D" unique_id=1447713232]
+script = ExtResource("1_rwgxs")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=695546658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5924726, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1648489155]
+transform = Transform3D(0.3568716, 0.4428927, -0.82248944, -0.493935, 0.8367814, 0.2362741, 0.79288787, 0.32193682, 0.51738364, -2.2109542, 2.2381372, 2.9591184)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1401733991]
+transform = Transform3D(0.7005999, 0.15875293, -0.6956704, 0.024604257, 0.9689825, 0.2459017, 0.71313006, -0.18939517, 0.674963, -4.7748804, 3.3024075, 5.807393)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=541393039]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1770178168]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ikqwi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=189630491]
+transform = Transform3D(6, 0, 0, 0, 5, 0, 0, 0, 6, 0, -2.5, 0)
+shape = SubResource("BoxShape3D_nnsk1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1603721788]
+environment = SubResource("Environment_ikqwi")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=226335953]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=710659513]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, -30.968355, 0)
+shape = SubResource("BoxShape3D_ikqwi")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2066664374]
+
+[node name="score_label" type="Label" parent="CanvasLayer" unique_id=480380025]
+offset_left = 16.0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(3, 3)
+text = "0"
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
