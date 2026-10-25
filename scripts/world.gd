@@ -32,6 +32,7 @@ func _spawn():
 	
 func _drop():
 	current_block.drop()
+	current_block.set_collision_layer_value(1, true)
 	score += 1
 	score_label.text = str(score)
 	spawn.position.y += 0.5

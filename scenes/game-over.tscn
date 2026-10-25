@@ -1,11 +1,42 @@
 [gd_scene format=3 uid="uid://bsffn8pci2cd6"]
 
+[ext_resource type="Script" uid="uid://dssbp5lbay1cv" path="res://scripts/game_over.gd" id="1_4sy36"]
+[ext_resource type="Texture2D" uid="uid://b3raddwpfbwhk" path="res://assets/qwantani_moon_noon_puresky_4k.exr" id="1_i8wdk"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4sy36"]
+panorama = ExtResource("1_i8wdk")
+
+[sub_resource type="Sky" id="Sky_i8wdk"]
+sky_material = SubResource("PanoramaSkyMaterial_4sy36")
+
+[sub_resource type="Environment" id="Environment_d76xi"]
+background_mode = 2
+sky = SubResource("Sky_i8wdk")
+
 [node name="Node2D" type="Node2D" unique_id=1598684365]
+script = ExtResource("1_4sy36")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1645444175]
+environment = SubResource("Environment_d76xi")
+
+[node name="QwantaniMoonNoonPuresky4k" type="Sprite2D" parent="." unique_id=1190549540]
+position = Vector2(1878, 228)
+texture = ExtResource("1_i8wdk")
 
 [node name="Label" type="Label" parent="." unique_id=14592829]
-offset_left = 498.0
-offset_top = 191.0
-offset_right = 1107.0
-offset_bottom = 606.0
+offset_left = 500.0
+offset_top = 250.0
+offset_right = 684.0
+offset_bottom = 343.0
+theme_override_font_sizes/font_size = 32
 text = "GAME OVER
 "
+
+[node name="Button" type="Button" parent="." unique_id=1451750407]
+offset_left = 561.0
+offset_top = 305.0
+offset_right = 626.0
+offset_bottom = 336.0
+text = "Restart"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
